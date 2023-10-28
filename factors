@@ -1,0 +1,41 @@
+#!/usr/bin/python3
+"""
+Factorize as many numbers as possible into a product of two smaller numbers.
+	Output format: n=p*q
+		one factorization per line
+		p and q don’t have to be prime numbers
+		See example
+    Push all your scripts, source code, etc… to your repository
+"""
+# library to get arguments
+import sys
+
+
+# fn unpack number factorial
+def main():
+    """
+    my main function runs the code
+    """
+    try:
+        filepath = sys.argv[1]
+
+        with open(filepath) as val:
+            for number in val:
+                number = int(number)
+                if number % 2 == 0:
+                        print("{}={}*{}".format(number, number // 2, 2))
+                        continue
+                i = 3
+                while i < number // 2:
+                    if number % i == 0:
+                        print("{}={}*{}".format(number, number // i, i))
+                        break
+                    i = i + 2
+                if i == (number // 2) + 1:
+                    print("{}={}*{}".format(number, number, 1))
+    except IndexError:
+        pass
+
+
+# run main
+main()
